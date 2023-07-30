@@ -1,0 +1,25 @@
+package: theme_gh_synchronizer
+version: '1.0'
+author: 'Daniel Springer, Medienfeuer'
+supportpage: 'https://github.com/danspringer/theme_gh_synchronizer'
+
+pages:
+    theme/theme_gh_synchronizer:
+        title: 'translate:theme_gh_synchronizer_title'
+        icon: rex-icon fa-github
+        subpages:
+            docs:
+              { title: 'translate:theme_gh_synchronizer_docs',
+                subPath: README.md
+              }
+            settings:
+              { title: 'translate:theme_gh_synchronizer_settings'
+              }
+            log:
+              { title: 'translate:theme_gh_synchronizer_log'
+              }
+
+requires:
+    redaxo: '^5.1.0'
+    theme:  '^8'
+    developer: "^4"

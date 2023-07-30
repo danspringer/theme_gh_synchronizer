@@ -1,0 +1,24 @@
+theme_gh_synchronizer_title = Theme-GitHub-Synchronizer
+theme_gh_synchronizer_description = Den Redaxo-Theme Ordner mit einem GitHub-Repository synchronisieren
+
+theme_gh_synchronizer_docs = Doku
+theme_gh_synchronizer_settings = Einstellungen
+theme_gh_synchronizer_config = Konfiguration
+theme_gh_synchronizer_webhook = Webhook
+theme_gh_synchronizer_log = Log
+theme_gh_synchronizer_repository = Repository
+theme_gh_synchronizer_access_token = GitHub
+
+theme_gh_synchronizer_secret_label = Webhook Secret
+theme_gh_synchronizer_webhook_id_label = Webhook ID
+theme_gh_synchronizer_repository_url_label = Repository-URL
+theme_gh_synchronizer_access_token_label = Access-Token
+theme_gh_synchronizer_secret_notice = Secret des in GitHub definierten WebHooks (<code>https://github.com/{DEIN_USERNAME}/{DEIN_REPO}/settings/hooks/id?tab=settings</code>)
+theme_gh_synchronizer_webhook_id_notice = ID des Webhooks (Zu finden in der URL des Webhook oder in der Übersicht eines Test-Deliveries im Header unter <code>X-GitHub-Hook-ID</code>)
+theme_gh_synchronizer_repository_url_notice = URL des Repository auf GitHub (<code>https://github.com/{DEIN_USERNAME}/{DEIN_REPO}</code>), welches synchronisiert werden soll.
+theme_gh_synchronizer_access_token_notice = Access Token des GitHub-Accounts, dem das Repository gehört. Wird benötigt um das API-Limit zu erhöhen und um auf private Repositories zugreifen zu dürfen.
+
+theme_gh_synchronizer_log_date = Datum
+theme_gh_synchronizer_log_level = Level
+theme_gh_synchronizer_log_message = Nachricht
+theme_gh_synchronizer_log_no_rows_message = Keine Einträge

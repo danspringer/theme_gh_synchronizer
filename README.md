@@ -1,7 +1,14 @@
 # Theme-GitHub-Synchronizer für REDAXO
 
 Dieses AddOn ermöglicht es, REDAXO mit einem GitHub-Repository zu verbinden, um dann automatisch via GitHub-Webhook den <code>theme</code>-Ordner im Root zu aktualisieren.
-Somit aktualisiert sich sich REDAXO bzw. das Theme-Addon bei Commits oder gemergten Pull-Requests im entsprechenden Respository von GitHub automatisch.
+Somit aktualisiert sich REDAXO bzw. das Theme-Addon bei Commits oder gemergten Pull-Requests in das definierte Respository von GitHub automatisch.
+
+![Theme-GitHub-Synchronizer](https://github.com/danspringer/theme_gh_synchronizer/assets/16903055/098080a6-8b05-4ff4-993b-622744cc8c4c)
+
+
+REDAXO läuft dann quasi für die Frontend-Entwicklung (Templates, Module, Actions, etc., sowie ggf. Assets wie CSS, JS-Files) auf Basis des GitHub-Repository.
+
+Die Systematik ist inspiriert von Shopify-Themes - hier kann man das Theme für den Shopify-Shop als GitHub-Repository hinterlegen und das Theme wird quasi von "extern" aus GitHub geladen.
 
 ## How-To
 Bevor man starten kann, muss man einige Vorbereitungen treffen:
@@ -28,12 +35,12 @@ Je nachdem, wie das Projekt-Setup aussieht und welche Dateien und Ordner in GitH
 
 
 ### Webhook bei GitHub anlegen
-Innerhalb des Repository muss ein Webhook angelegt werden. Dies kann man hier tun: https://github.com/dein_username/repo_name/settings/hooks/
+Innerhalb des Repository muss ein Webhook angelegt werden. Dies kann man hier tun: https://github.com/{DEIN_USERNAME}/{REPO_NAME}/settings/hooks/
 
 Der Webhook soll wie folgt konfiguriert sein:
 
 **Payload-URL:**
-```https://deinedomain.de/?rex-api-call=github_webhook```
+```https://{DEINEDOMAIN.de}/?rex-api-call=github_webhook```
 
 **Content type**
 ```application/json```
@@ -69,14 +76,14 @@ Nachdem wir den Token generiert haben, holen wir ihn uns in die Zwischenablage u
 Nachdem wir im Schritt zuvor bereits den Access token im AddOn hinterlegt haben, tragen wir in den AddOn-Einstellungen nun noch die URL des Repositorys ein, sowie das `Webhook Secret` und die `Webhook ID`.
 
 Das Secret ist das selbst angelegte Secret des Webhooks.
-Die ID des Webhooks kann man sich von GitHub anzeigen lassen, indem man unter [https://github.com/dein_username/repo_name/settings/hooks](https://github.com/dein_username/repo_name/settings/hooks) den Webhook anklickt und die ID oben aus der URL holt oder dort unter `Recent Deliveries` eine Test-Webhook auslöst und im Header von GitHub unter `X-GitHub-Hook-ID` nachsieht.
+Die ID des Webhooks kann man sich von GitHub anzeigen lassen, indem man unter [https://github.com/{DEIN_USERNAME}/{REPO_NAME}/settings/hooks](https://github.com/{DEIN_USERNAME}/{REPO_NAME}/settings/hooks) den Webhook anklickt und die ID oben aus der URL holt oder dort unter `Recent Deliveries` eine Test-Webhook auslöst und im Header von GitHub unter `X-GitHub-Hook-ID` nachsieht.
 
 
 ### Funktionalität testen
 Wenn man alles konfiguriert hat, sollte man entweder
 - Einen Test-Webhook auslösen
-- Etwas in Repo pushen oder einen PR mergen
-damit im [Log](index.php?page=theme/theme_gh_synchronizer/log) dann ein Eintrag zu finden ist.
+- Etwas in das Repository pushen oder einen PR mergen
+damit im [Log des Addons](index.php?page=theme/theme_gh_synchronizer/log) dann ein Eintrag zu finden ist.
 
 ## Credits
 Daniel Springer, Medienfeuer
