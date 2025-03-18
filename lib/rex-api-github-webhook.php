@@ -67,7 +67,7 @@ class rex_api_github_webhook extends rex_api_function
         // Wenn der Token valide ist, weitermachen
         $data = rex_var::toArray($body);
         // Alles okay, los geht´s
-        theme_gh_synchronizer::log('success', $body);
+        theme_gh_synchronizer::log('success', '<code>'.$body.'</code>');
 
         $gh_access_token = $addon->getConfig('access_token');
         $zip_path = $addon->getDataPath() . "master.zip";
@@ -76,7 +76,7 @@ class rex_api_github_webhook extends rex_api_function
             $unzipped_folder_name = theme_gh_synchronizer::unzip($zip_path);
             // Wenn der Name des entpackten Ordners zurückkommt, theme-Ordner im Root suchen und verschieben, anschließend urspr. Ordner löschen.
             if( $unzipped_folder_name) {
-                theme_gh_synchronizer::log('info', 'Unzipped: ' . $unzipped_folder_name);
+                theme_gh_synchronizer::log('info', 'Unzipped: <code>' . $unzipped_folder_name .'</code>');
                 // Nur den Theme-Ordner aus dem entpackten Zip-Ordner ziehen und in den Data-Ordner des AddOns verschieben
                 theme_gh_synchronizer::moveFolder($addon->getDataPath().$unzipped_folder_name.'/theme', $addon->getDataPath() . 'theme');
                 // Unzipped-Ordner löschen, es bleibt der neue "nackte" Ordner theme übrig im Data-Ordner

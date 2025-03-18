@@ -7,6 +7,10 @@ $list->setColumnLabel('level', rex_i18n::msg('theme_gh_synchronizer_log_level'))
 $list->setColumnLabel('message', rex_i18n::msg('theme_gh_synchronizer_log_message'));
 $list->setColumnFormat('date', 'date','d.m.Y H:i:s');
 $list->setColumnFormat('level', 'custom','theme_gh_synchronizer::returnLevelBadge',['level'=>'###level###']);
+// Zeilenumbrüche in der Listen-Darstellung erlauben
+$list->setColumnFormat('message', 'custom', function ($params) {
+    return nl2br($params['value']);
+});
 $list->setNoRowsMessage(rex_i18n::msg('theme_gh_synchronizer_log_no_rows_message'));
 $list->addTableAttribute('class', 'table-hover');
 $list->show();

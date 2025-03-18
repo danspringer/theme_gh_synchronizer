@@ -26,8 +26,7 @@ class theme_gh_synchronizer
                 rex_logger::factory()->log('error', 'Failed to write file');
                 return false;
             } else {
-                self::log('success', 'Successfully downloaded zip file');
-                self::log('success', 'File-Path: '.$zip_path);
+                self::log('success', 'Successfully downloaded zip file.<br>File-Path: <code>'.$zip_path.'</code>');
             }
             fclose($file_handler);
         }
@@ -64,20 +63,20 @@ class theme_gh_synchronizer
     public static function moveFolder($folder_path, $dst_folder_path) {
 
         if (!is_dir($folder_path)) {
-            self::log('error', 'Invalid source folder: ' . $folder_path);
+            self::log('error', 'Invalid source folder: <code>' . $folder_path. '</code>');
             return false;
         }
 
         if (!is_writable(dirname($dst_folder_path))) {
-            self::log('error', 'Destination folder is not writable: ' . $dst_folder_path);
+            self::log('error', 'Destination folder is not writable: <code>' . $dst_folder_path . '</code>');
             return false;
         }
 
         if (!rex_file::move($folder_path, $dst_folder_path)) {
-            self::log('error', 'Failed to move the folder from ' . $folder_path . ' to ' . $dst_folder_path);
+            self::log('error', 'Failed to move the folder from <code>' . $folder_path . '</code> to <code>' . $dst_folder_path . '</code>');
             return false;
         }
-
+        self::log('success', 'Folder moved from <code>' . $folder_path . '</code> to <code>' . $dst_folder_path . '</code>');
         return true;
     }
 

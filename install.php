@@ -1,8 +1,10 @@
 <?php
+$addon = rex_addon::get('theme_gh_synchronizer');
+$dataPath = $addon->getDataPath();
 //Erstmal frisch machen
-rex_dir::delete(rex_addon::get('theme_gh_synchronizer')->getDataPath());
-// copy data directory
-rex_dir::copy(rex_addon::get('theme_gh_synchronizer')->getPath('data'), rex_addon::get('theme_gh_synchronizer')->getDataPath());
+rex_dir::delete($dataPath);
+// Data-Directory anlegen
+mkdir($dataPath, 0755, true);
 // Eigene Log-Tabelle
 rex_sql_table::get(rex::getTable('theme_gh_synchronizer_log'))
     ->ensurePrimaryIdColumn()
